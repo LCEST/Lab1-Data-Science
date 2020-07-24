@@ -5,6 +5,9 @@
 #Juan Menchu 16150
 #Lab1
 
+#Partes del codigo son tomadas de entregas pasadas del curso de mineria de datos del
+#semestre pasado, de autoria de miembros de este grupo
+
 #Carga de datos y librerias
 ###################################################################################################
 library("ggpubr")
