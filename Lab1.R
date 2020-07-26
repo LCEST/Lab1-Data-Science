@@ -366,19 +366,24 @@ table(data$SaleCondition)
 #Ejercicio 7
 ###################################################################################################
 datos=train
+
 datos$HouseStyle <- as.factor(datos$HouseStyle)
 datos$RoofStyle <- as.factor(datos$RoofStyle)
 datos$GarageQual <- as.factor(datos$GarageQual)
 datos$SaleType <- as.factor(datos$SaleType)
-datos$SaleCondition <- as.factor(datos$SaleCondition)
+datos$WoodDeckSF <-as.factor(datos$WoodDeckSF)
 datos$KitchenQual <- as.factor(datos$KitchenQual)
+datos$LotArea <- as.factor(datos$LotArea)
+datos$FullBath <-as.factor(datos$FullBath)
 
-datanueva <- c("HouseStyle", "RoofStyle", "GarageQual", "SaleType", "SaleCondition", "KitchenQual")
+
+datanueva <- c("HouseStyle", "RoofStyle", "GarageQual", "SaleType", "WoodDeckSF", "KitchenQual","LotArea", "FullBath")
 nuevaData <- datos[datanueva]
 
 reglas<-apriori(nuevaData, parameter = list(support = 0.2,
                                         confidence = 0.70,
                                         target = "rules"))
-reglasOrdenado <- sort(reglas, by="lift")
+reglasOrdenado<- sort(reglas, by="lift") 
 inspect(reglasOrdenado)
+
 ###################################################################################################
