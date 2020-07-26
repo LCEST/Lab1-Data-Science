@@ -379,6 +379,6 @@ nuevaData <- datos[datanueva]
 reglas<-apriori(nuevaData, parameter = list(support = 0.2,
                                         confidence = 0.70,
                                         target = "rules"))
-reglas.sorted <- sort(reglas, by="lift")
-inspect(reglas.sorted)
+reglasOrdenado <- sort(reglas, by="lift")
+inspect(reglasOrdenado)
 ###################################################################################################
