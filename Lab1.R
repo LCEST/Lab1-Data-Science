@@ -11,6 +11,7 @@
 #Carga de datos y librerias
 ###################################################################################################
 library("ggpubr")
+library("arules")
 
 setwd("./")
 data <- read.csv("./Data/train.csv", stringsAsFactors = FALSE)
@@ -361,5 +362,23 @@ table(data$SaleType)
 
 # Tabla de SaleCondition
 table(data$SaleCondition)
+###################################################################################################
+#Ejercicio 7
+###################################################################################################
+datos=train
+datos$HouseStyle <- as.factor(datos$HouseStyle)
+datos$RoofStyle <- as.factor(datos$RoofStyle)
+datos$GarageQual <- as.factor(datos$GarageQual)
+datos$SaleType <- as.factor(datos$SaleType)
+datos$SaleCondition <- as.factor(datos$SaleCondition)
+datos$KitchenQual <- as.factor(datos$KitchenQual)
 
+datanueva <- c("HouseStyle", "RoofStyle", "GarageQual", "SaleType", "SaleCondition", "KitchenQual")
+nuevaData <- datos[datanueva]
+
+reglas<-apriori(nuevaData, parameter = list(support = 0.2,
+                                        confidence = 0.70,
+                                        target = "rules"))
+reglas.sorted <- sort(reglas, by="lift")
+inspect(reglas.sorted)
 ###################################################################################################
